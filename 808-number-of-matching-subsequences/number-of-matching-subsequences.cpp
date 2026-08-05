@@ -3,13 +3,11 @@ public:
 
     bool isSubsequence(string word, vector<vector<int>>& pos) {
 
-        int prev = -1;
+        int prev = -2;
 
         for(char ch : word) {
 
             int c = ch - 'a';
-
-            // find first position greater than prev
             auto it = upper_bound(pos[c].begin(), pos[c].end(), prev);
 
             if(it == pos[c].end())
@@ -25,8 +23,6 @@ public:
     int numMatchingSubseq(string s, vector<string>& words) {
 
         vector<vector<int>> pos(26);
-
-        // preprocessing
         for(int i = 0; i < s.size(); i++) {
             pos[s[i]-'a'].push_back(i);
         }
