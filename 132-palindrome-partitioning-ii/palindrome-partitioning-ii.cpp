@@ -5,7 +5,7 @@ public:
 
         vector<vector<bool>> pal(n, vector<bool>(n, false));
 
-        // Precompute palindromes
+    
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
 
