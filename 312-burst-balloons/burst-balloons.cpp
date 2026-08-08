@@ -13,7 +13,7 @@ public:
 
         for (int k = i; k <= j; k++) {
 
-            int cost = solve(i, k - 1, arr, dp)
+            int cost = solve(i, k-1 , arr, dp)
                      + solve(k + 1, j, arr, dp)
                      + arr[i - 1] * arr[k] * arr[j + 1];
 
