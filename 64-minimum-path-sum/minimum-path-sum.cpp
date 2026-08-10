@@ -16,11 +16,11 @@ public:
                     continue;
 
                 if(i == m-1) {
-                    // Last row → can only move right
+                
                     dp[i][j] = Grid[i][j] + dp[i][j+1];
                 }
                 else if(j == n-1) {
-                    // Last column → can only move down
+                
                     dp[i][j] = Grid[i][j] + dp[i+1][j];
                 }
                 else {
