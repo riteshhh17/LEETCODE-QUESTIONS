@@ -4,35 +4,36 @@ public:
         int a = sqrt(n);
 
         vector<int> vec;
+
         for (int i = 1; i <= a; i++) {
             vec.push_back(i * i);
         }
 
         int b = vec.size();
 
-        vector<vector<int>> dp(n + 1, vector<int>(b + 1, INT_MAX));
+        vector<vector<int>> dp(b + 1, vector<int>(n + 1, INT_MAX));
 
-        // 0 sum requires 0 squares
-        for (int j = 0; j <= b; j++) {
-            dp[0][j] = 0;
+        // Sum 0 needs 0 squares
+        for (int i = 0; i <= b; i++) {
+            dp[i][0] = 0;
         }
 
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= b; j++) {
+        for (int i = 1; i <= b; i++) {
+            for (int j = 1; j <= n; j++) {
 
                 
-                dp[i][j] = dp[i][j - 1];
+                dp[i][j] = dp[i - 1][j];
 
                 
-                if (vec[j - 1] <= i) {
+                if (vec[i - 1] <= j) {
                     dp[i][j] = min(
                         dp[i][j],
-                        1 + dp[i - vec[j - 1]][j]
+                        1 + dp[i][j - vec[i - 1]]
                     );
                 }
             }
         }
 
-        return dp[n][b];
+        return dp[b][n];
     }
 };
