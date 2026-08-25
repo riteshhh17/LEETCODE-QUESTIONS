@@ -17,7 +17,7 @@ class Solution {
             len++;
             temp=temp.next;
         }
-        if(len==1) return null;
+    
         if(len==n){
             temp=head;
             head=temp.next;
